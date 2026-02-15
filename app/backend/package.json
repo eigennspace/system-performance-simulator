@@ -1,0 +1,28 @@
+{
+  "name": "@sim/backend",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "test": "NODE_ENV=test vitest run"
+  },
+  "dependencies": {
+    "@sim/shared-types": "0.1.0",
+    "@sim/simulation-engine": "0.1.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.1",
+    "tsx": "^4.19.2",
+    "vitest": "^2.1.8"
+  }
+}

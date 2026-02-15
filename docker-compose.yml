@@ -1,0 +1,25 @@
+services:
+  simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: system-performance-simulator:latest
+    container_name: system-performance-simulator
+    restart: unless-stopped
+    ports:
+      - "4300:4300"
+    environment:
+      - NODE_ENV=production
+      - PORT=4300
+      - FRONTEND_DIST=/app/app/frontend/dist
+    volumes:
+      - simulator-data:/app/app/backend/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:4300/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  simulator-data:
